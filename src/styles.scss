@@ -1,1 +1,74 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+@font-face {
+  font-family: "Averta";
+  src: local("Averta"), url(assets/fonts/Averta-Regular.otf) format("truetype");
+  font-display: swap;
+}
+
+* {
+  font-family: "Averta", sans-serif;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+ul {
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.pagination {
+  font-size: 12px !important;
+}
+
+.page-item.active .page-link {
+  color: #fff;
+  background-color: #fbfcfe !important;
+  border-color: #dee2e6 !important;
+}
+
+.instagram {
+  filter: invert(25%) sepia(92%) saturate(4514%) hue-rotate(339deg)
+    brightness(91%) contrast(89%);
+  -webkit-filter: invert(25%) sepia(92%) saturate(4514%) hue-rotate(339deg)
+    brightness(91%) contrast(89%);
+}
+
+.twitter {
+  filter: invert(13%) sepia(35%) saturate(824%) hue-rotate(176deg)
+    brightness(96%) contrast(95%);
+  -webkit-filter: invert(13%) sepia(35%) saturate(824%) hue-rotate(176deg);
+}
+
+.website {
+  filter: invert(15%) sepia(8%) saturate(557%) hue-rotate(164deg)
+    brightness(92%) contrast(97%);
+  -webkit-filter: invert(15%) sepia(8%) saturate(557%) hue-rotate(164deg)
+    brightness(92%) contrast(97%);
+}
+
+.discord {
+  filter: invert(75%) sepia(9%) saturate(464%) hue-rotate(160deg)
+    brightness(87%) contrast(94%);
+  -webkit-filter: invert(75%) sepia(9%) saturate(464%) hue-rotate(160deg)
+    brightness(87%) contrast(94%);
+}
