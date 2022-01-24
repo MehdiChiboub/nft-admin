@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { CollectionsRoutingModule } from './collections-routing.module';
 import { CollectionsComponent } from './collections.component';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -14,9 +12,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     CollectionsRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgbModule
   ]
 })
 export class CollectionsModule { }

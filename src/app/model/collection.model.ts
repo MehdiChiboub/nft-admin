@@ -16,7 +16,7 @@ export interface Collection {
   added: string;
   link: string;
   image: string;
-  image_cover: string;
+  imgCover: string;
   description: string;
   website: string;
   discord: string;
