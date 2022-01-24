@@ -31,4 +31,22 @@ export class ScrappingService {
       .get(`localhost:8083/collections/analysis?clusters=${clusters}`)
       .toPromise();
   }
+
+  getAllCollections(page: number, limit: number): any {
+    return this.http
+      .get(`localhost:8083/collections/list?page=${page}&limit=${limit}`)
+      .toPromise();
+  }
+
+  getRecentCollections(): any {
+    return this.http
+      .get(`localhost:8083/recent-collections/list`)
+      .toPromise();
+  }
+
+  getTopCollections(): any {
+    return this.http
+      .get(`localhost:8083/top-collections/list`)
+      .toPromise();
+  }
 }

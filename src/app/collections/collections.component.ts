@@ -1,18 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { Component, OnInit, PipeTransform } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
+
+import { Observable } from 'rxjs/internal/Observable';
+import { filter, map, startWith } from 'rxjs/operators';
+import { Collection } from '../model/collection.model';
 import { ScrappingService } from '../services/scrapping.service';
 
 @Component({
   selector: 'app-collections',
   templateUrl: './collections.component.html',
   styleUrls: ['./collections.component.scss'],
+  providers: [DecimalPipe]
 })
 export class CollectionsComponent implements OnInit {
+
+  COLLECTION: Collection[] = [];
+  page = 1;
+  pageSize = 10;
+  collectionSize = this.COLLECTION.length;
+  collections: Collection[];
+  collections$: Observable<Collection[]>;
+  filter = new FormControl('');
   currentRoute: string;
   clusters: number;
 
   constructor(
+    private pipe: DecimalPipe,
     private router: Router,
     private scrappingService: ScrappingService
   ) {
@@ -22,6 +37,7 @@ export class CollectionsComponent implements OnInit {
         // get url
         this.currentRoute = event.url.slice(1);
       });
+    this.refreshCollections();
   }
 
   ngOnInit(): void {}
@@ -71,10 +87,28 @@ export class CollectionsComponent implements OnInit {
     this.scrappingService
       .getKMeansCollections(this.clusters)
       .then((res: any) => {
-        console.log(res);
+        this.COLLECTION = res;
       })
       .catch((err: any) => {
         console.log(err);
       });
+  }
+
+  refreshCollections(): void {
+    this.collections = this.COLLECTION
+      .map((collection, i) => ({number: i + 1, ...collection}))
+      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+
+    this.collections$ = this.filter.valueChanges.pipe(
+      startWith(''),
+      map(text => this.search(text, this.pipe))
+    );
+  }
+
+  search(text: string, pipe: PipeTransform): Collection[] {
+    return this.collections.filter(collection => {
+      const term = text.toLowerCase();
+      return collection.name.toLowerCase().includes(term);
+    });
   }
 }
