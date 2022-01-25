@@ -30,7 +30,6 @@
         <tr *ngFor="let collection of collections$ | async; index as i">
           <th scope="row">{{ i + 1 }}</th>
           <td class="text-truncate">
-            <img [src]="collection.image" class="mr-1 rounded-circle" style="width: 20px">
             <ngb-highlight class="ml-1" [result]="collection.name" [term]="filter.value"></ngb-highlight>
           </td>
           <td class="text-center">

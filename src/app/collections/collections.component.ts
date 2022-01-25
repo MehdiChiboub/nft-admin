@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { filter, map, startWith } from 'rxjs/operators';
 import { Collection } from '../model/collection.model';
 import { ScrappingService } from '../services/scrapping.service';
+import { CollectionsModule } from './collections.module';
 
 @Component({
   selector: 'app-collections',
@@ -87,7 +88,26 @@ export class CollectionsComponent implements OnInit {
     this.scrappingService
       .getKMeansCollections(this.clusters)
       .then((res: any) => {
+        console.log(res);
+        res.map(item => {
+          // avg_price_7d: "67.74"
+          // estimatedMarketCap: "677297.53"
+          // name: "CryptoPunks"
+          // number: "1"
+          // owners: "3329.0"
+          // owners_percentage: "33.29"
+          // sales_7d: "57.0"
+          // sales_all_time: "18564.0"
+          // totalSupply: "9999.0"
+          // volume_7d: "3860.98"
+          // volume_all_time: "783815.61"
+
+          
+          // this.COLLECTION. = item.;
+
+        });
         this.COLLECTION = res;
+        this.refreshCollections();
       })
       .catch((err: any) => {
         console.log(err);
