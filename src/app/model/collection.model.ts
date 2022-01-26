@@ -24,3 +24,18 @@ export interface Collection {
   instagram: string;
   nfts: Array<Nft>;
 }
+
+export interface RecentCollection {
+  _id?: string;
+  name?: string;
+  link?: string;
+  image?: string;
+}
+
+export interface TopCollection {
+  _id?: string;
+  name?: string;
+  volume?: string;
+  link?: string;
+  image?: string;
+}

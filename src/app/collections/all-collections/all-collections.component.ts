@@ -57,6 +57,11 @@ export class AllCollectionsComponent implements OnInit {
     this.service
       .getAllCollections(this.page, this.pageSize)
       .then((res: any) => {
+        console.log(res);
+        res.map((element) => {
+          element.total_supply = element.totalSupply;
+          element.estimated_market_cap = element.estimatedMarketCap;
+        });
         this.COLLECTION = res;
       })
       .catch((err: any) => {

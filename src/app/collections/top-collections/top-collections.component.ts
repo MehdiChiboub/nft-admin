@@ -1,3 +1,4 @@
+import { TopCollection } from './../../model/collection.model';
 import { Component, OnInit, PipeTransform } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { FormControl } from '@angular/forms';
@@ -15,12 +16,12 @@ import { ScrappingService } from 'src/app/services/scrapping.service';
 })
 export class TopCollectionsComponent implements OnInit {
 
-  COLLECTION: Collection[] = [];
+  COLLECTION: TopCollection[] = [];
   page = 1;
   pageSize = 10;
   collectionSize = this.COLLECTION.length;
-  collections: Collection[];
-  collections$: Observable<Collection[]>;
+  collections: TopCollection[];
+  collections$: Observable<TopCollection[]>;
   filter = new FormControl('');
 
   constructor(
@@ -45,7 +46,7 @@ export class TopCollectionsComponent implements OnInit {
     );
   }
 
-  search(text: string, pipe: PipeTransform): Collection[] {
+  search(text: string, pipe: PipeTransform): TopCollection[] {
     return this.collections.filter(collection => {
       const term = text.toLowerCase();
       return collection.name.toLowerCase().includes(term);
@@ -56,6 +57,8 @@ export class TopCollectionsComponent implements OnInit {
     this.service
       .getTopCollections()
       .then((res: any) => {
+        console.log(res);
+
         this.COLLECTION = res;
       })
       .catch((err: any) => {

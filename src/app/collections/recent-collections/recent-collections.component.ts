@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { Collection } from 'src/app/model/collection.model';
+import { Collection, RecentCollection } from 'src/app/model/collection.model';
 import { ScrappingService } from 'src/app/services/scrapping.service';
 
 
@@ -15,13 +15,12 @@ import { ScrappingService } from 'src/app/services/scrapping.service';
   providers: [DecimalPipe]
 })
 export class RecentCollectionsComponent implements OnInit {
-
-  COLLECTION: Collection[] = [];
+  COLLECTION: RecentCollection[] = [];
   page = 1;
   pageSize = 10;
   collectionSize = this.COLLECTION.length;
-  collections: Collection[];
-  collections$: Observable<Collection[]>;
+  collections: RecentCollection[];
+  collections$: Observable<RecentCollection[]>;
   filter = new FormControl('');
 
   constructor(
@@ -46,7 +45,7 @@ export class RecentCollectionsComponent implements OnInit {
     );
   }
 
-  search(text: string, pipe: PipeTransform): Collection[] {
+  search(text: string, pipe: PipeTransform): RecentCollection[] {
     return this.collections.filter(collection => {
       const term = text.toLowerCase();
       return collection.name.toLowerCase().includes(term);

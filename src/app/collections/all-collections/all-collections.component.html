@@ -31,37 +31,37 @@
           <th scope="row">{{ i + 1 }}</th>
           <td class="text-truncate">
             <img [src]="collection.image" class="mr-1 rounded-circle" style="width: 20px">
-            <ngb-highlight class="ml-1" [result]="collection.name" [term]="filter.value"></ngb-highlight>
+            <ngb-highlight class="ml-1" [result]="collection.name" [term]="filter.value">{{ collection.name }}</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.volume_7d"></ngb-highlight>
+            <ngb-highlight [result]="collection.volume_7d">{{ collection.volume_7d }}</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.sales_7d"></ngb-highlight>
+            <ngb-highlight [result]="collection.sales_7d">{{ collection.sales_7d }}</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.volume_all_time"></ngb-highlight>
+            <ngb-highlight [result]="collection.volume_all_time">{{ collection.volume_all_time }}</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.sales_all_time"></ngb-highlight>
+            <ngb-highlight [result]="collection.sales_all_time">{{ collection.sales_all_time }}</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.avg_price_7d"></ngb-highlight>
+            <ngb-highlight [result]="collection.avg_price_7d">{{ collection.avg_price_7d }}</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.total_supply"></ngb-highlight>
+            <ngb-highlight [result]="collection.total_supply">{{ collection.total_supply }}</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.owners"></ngb-highlight>
+            <ngb-highlight [result]="collection.owners">{{ collection.owners }}</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.owners_percentage"></ngb-highlight>
+            <ngb-highlight [result]="collection.owners_percentage">{{ collection.owners_percentage }} %</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.estimated_market_cap"></ngb-highlight>
+            <ngb-highlight [result]="collection.estimated_market_cap">{{ collection.estimated_market_cap }}</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.added"></ngb-highlight>
+            <ngb-highlight [result]="collection.added">{{ collection.added }}</ngb-highlight>
           </td>
           <td class="text-center">
             <a *ngIf="collection.website" [href]="collection.website" target="_blank">

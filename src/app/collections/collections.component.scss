@@ -106,7 +106,8 @@
       margin-top: 4rem;
 
       .card-container {
-        width: 30rem !important;
+        min-width: 20rem !important;
+        max-width: 20rem !important;
         height: fit-content !important;
         margin-right: 2rem !important;
         text-align: center;

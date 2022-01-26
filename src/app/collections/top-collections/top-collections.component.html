@@ -13,69 +13,21 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
-          <th class="text-center" scope="col">Volume(7d)</th>
-          <th class="text-center" scope="col">Sales(7d)</th>
-          <th class="text-center" scope="col">Volume (All time)</th>
-          <th class="text-center" scope="col">Sales(All time)</th>
-          <th class="text-center" scope="col">Avg Price(7d)</th>
-          <th class="text-center" scope="col">Total Supply</th>
-          <th class="text-center" scope="col">Owners</th>
-          <th class="text-center" scope="col">Owners%</th>
-          <th class="text-center" scope="col">EM Cap</th>
-          <th class="text-center" scope="col">Added</th>
-          <th class="text-center" scope="col">Social</th>
+          <th class="text-center" scope="col">Link</th>
+          <th class="text-center" scope="col">Volume</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let collection of collections$ | async; index as i">
           <th scope="row">{{ i + 1 }}</th>
           <td class="text-truncate">
-            <img [src]="collection.image" class="mr-1 rounded-circle" style="width: 20px">
-            <ngb-highlight class="ml-1" [result]="collection.name" [term]="filter.value"></ngb-highlight>
+            <ngb-highlight class="ml-1" [result]="collection.name" [term]="filter.value">{{ collection.name }}</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.volume_7d"></ngb-highlight>
+            <ngb-highlight [result]="collection.link">{{ collection.link }}</ngb-highlight>
           </td>
           <td class="text-center">
-            <ngb-highlight [result]="collection.sales_7d"></ngb-highlight>
-          </td>
-          <td class="text-center">
-            <ngb-highlight [result]="collection.volume_all_time"></ngb-highlight>
-          </td>
-          <td class="text-center">
-            <ngb-highlight [result]="collection.sales_all_time"></ngb-highlight>
-          </td>
-          <td class="text-center">
-            <ngb-highlight [result]="collection.avg_price_7d"></ngb-highlight>
-          </td>
-          <td class="text-center">
-            <ngb-highlight [result]="collection.total_supply"></ngb-highlight>
-          </td>
-          <td class="text-center">
-            <ngb-highlight [result]="collection.owners"></ngb-highlight>
-          </td>
-          <td class="text-center">
-            <ngb-highlight [result]="collection.owners_percentage"></ngb-highlight>
-          </td>
-          <td class="text-center">
-            <ngb-highlight [result]="collection.estimated_market_cap"></ngb-highlight>
-          </td>
-          <td class="text-center">
-            <ngb-highlight [result]="collection.added"></ngb-highlight>
-          </td>
-          <td class="text-center">
-            <a *ngIf="collection.website" [href]="collection.website" target="_blank">
-              <img src="assets/svg/website.svg" class="mr-1 website" width="16px">
-            </a>
-            <a *ngIf="collection.discord" [href]="collection.discord" target="_blank">
-              <img src="assets/svg/discord.svg" class="mr-1 discord" width="18px">
-            </a>
-            <a *ngIf="collection.twitter" [href]="collection.twitter" target="_blank">
-              <img src="assets/svg/twitter.svg" class="mr-1 twitter" width="18px">
-            </a>
-            <a *ngIf="collection.instagram" [href]="collection.instagram" target="_blank">
-              <img src="assets/svg/instagram.svg" class="mr-1 instagram" width="18px">
-            </a>
+            <ngb-highlight [result]="collection.volume">{{ collection.volume }}</ngb-highlight>
           </td>
         </tr>
       </tbody>

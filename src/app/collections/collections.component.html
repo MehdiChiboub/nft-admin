@@ -79,7 +79,7 @@
       <h4 class="header-title">Analysis & Clustering</h4>
       <p class="header-text">Get to know more about NFTs collections with our Analysis (it takes around 25s)</p>
       <div class="analysis-cards">
-        <div class="card-container">
+        <div class="card-container" *ngIf="COLLECTION.length == 0">
           <h5 class="card-content-title">KMeans Analysis</h5>
           <p class="card-content-text">Choose number of Clusters to start the analysis</p>
           <input class="input form-control-sm" type="number" style="font-size: 12px;" [(ngModel)]="clusters" #clustersNumber>
