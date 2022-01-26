@@ -40,6 +40,10 @@ export class CollectionsComponent implements OnInit {
     this.refreshCollections();
   }
 
+  onStoreData() {
+
+  }
+
   ngOnInit(): void {}
 
   scroll(id: string): void {
@@ -83,10 +87,11 @@ export class CollectionsComponent implements OnInit {
       });
   }
 
-  startKMeans(): void {
+  startKMeans(clustersNumber): void {
     this.scrappingService
-      .getKMeansCollections(this.clusters)
+      .getKMeansCollections(clustersNumber)
       .then((res: any) => {
+        console.log(res);
         this.COLLECTION = res;
       })
       .catch((err: any) => {
